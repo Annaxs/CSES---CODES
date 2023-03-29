@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#define int long long
+#define pb push_back
+// #define __lcm boost::math::lcm
+using namespace std;
+void fast()
+{
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output1.txt", "w", stdout);
+#endif
+    std::ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+} 
+// int lowbit(int n){
+//     return n&(-n);
+// }
+void solve()
+{      
+    int r,c;
+    cin>>r>>c;
+    int ans = 0;
+    int z = max(r,c);
+    int a = (z-1)*(z-1);
+    //if max is odd then  navigation point would be even perfect square-> will lie on the first column
+    //if max is even then  navigation point would be odd perfect square->will lie on the first row
+    if(z % 2==0){
+        if(z==c){//means number is lying on the rigth side of the diagonal
+            ans = a+r;
+        }else{
+            ans = a+2*z-c;
+        } 
+    }else{
+        if(z==r){//number lies in the left half of the diagonal
+            ans = a+c;
+        }
+        else{
+            ans = a+2*z-r;
+        }
+    }
+    cout<<ans<<endl;
+}
+main()
+{
+    fast();
+    int t;
+    cin >> t;
+    while (t--)
+    solve();
+}
